@@ -134,12 +134,19 @@ class Booking extends BaseController
                                 'bookingDtm'=>date('Y-m-d H:i:sa'),
                                 'bookingComments'=>$bookingComments,
                                 'createdBy'=>$this->vendorId, 'createdDtm'=>date('Y-m-d H:i:sa'));
+            var_dump($startDate);
+            if($this->booking->getsamebook($startDate,$endDate)){
+                $this->session->set_flashdata('penuh', 'Ruangan Penuh di Jam tersebut');
+            }else{
+                $result = $this->booking->addedNewBooking($bookingInfo);
+                $this->session->set_flashdata('success', 'Success Booking');
+            }
             
-            $result = $this->booking->addedNewBooking($bookingInfo);
+            
             
             if($result > 0)
             {
-                $this->session->set_flashdata('success', 'New booking created successfully');
+                $this->session->set_flashdata('success', 'Success Booking');
             }
             else
             {
