@@ -112,12 +112,13 @@ class Booking_model extends CI_Model
         return $insert_id;
     }
 
-    public function getsamebook($bookstart,$bookend)
+    public function getsamebook($bookstart,$bookend,$room)
     {
         $this->db->select('BaseTbl.bookingId, BaseTbl.roomId,
                             BaseTbl.bookStartDate, BaseTbl.bookEndDate');
         $this->db->from('ldg_bookings AS BaseTbl');
         $this->db->where('BaseTbl.isDeleted', 0);
+        $this->db->where('BaseTbl.roomId',$room);
         $this->db->where('BaseTbl.bookStartDate <=',$bookstart);
         $this->db->where('BaseTbl.bookEndDate >=',$bookend);
         $query = $this->db->get();
