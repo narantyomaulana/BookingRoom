@@ -46,7 +46,7 @@
                                 </div>
                             </div>
                             <div class="row">
-								<div class="col-md-6">                                
+								<!-- <div class="col-md-6">                                
                                     <div class="form-group">
                                         <label for="floorId">Lantai</label>
                                         <select class="form-control" id="floorId" name="floorId">
@@ -64,7 +64,7 @@
                                             ?>
                                         </select>                                      
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="sizeId">Kapasitas Ruangan</label>
@@ -84,13 +84,23 @@
                                         </select>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
+                            
 							    <div class="col-md-6">                                
                                     <div class="form-group">
                                         <label for="roomId">Nama Ruangan</label>
-                                        <select class="form-control" id="roomId" name="roomId">
+                                        <select class="form-control" name="roomId">
                                             <option value="">Pilih Ruangan</option>
+                                            <?php
+                                            if(!empty($rooms))
+                                            {
+                                                foreach ($rooms as $r)
+                                                {
+                                                    ?>
+                                                    <option value="<?php echo $r->roomId ?>"><?php echo $r->roomNumber ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
                                         </select>                                      
                                     </div>
                                 </div>
@@ -100,12 +110,19 @@
                                         <input type="text" class="form-control" id="customerName" name="customerName" placeholder="Input Name" />
                                     </div>
                                 </div>
-                            </div>
-                              <div class="row">
+                            
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="customerId">Kontak PIC</label>
                                         <input type="text" class="form-control" name="kontakpic" placeholder="Input Kontak Pic" />
+                                        
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="customerId">Jumlah Peserta (... Orang)</label>
+                                        <input type="text" class="form-control" name="jumlahpeserta" placeholder="Jumlah Peserta" />
                                         
                                     </div>
                                 </div>

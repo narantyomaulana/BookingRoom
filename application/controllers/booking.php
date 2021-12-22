@@ -75,6 +75,7 @@ class Booking extends BaseController
 
         $data['floors'] = $this->rooms_model->getFloors();
         $data['roomSizes'] = $this->rooms_model->getRoomSizes();
+        $data['rooms'] = $this->rooms_model->getRooms();
 
         $this->loadViews("bookings/addNewBooking", $this->global, $data, NULL);
     }
@@ -106,7 +107,8 @@ class Booking extends BaseController
         $this->form_validation->set_rules('roomId','Room Number','trim|required|numeric');
         $this->form_validation->set_rules('bookingComments','Kegiatan','required');
         $this->form_validation->set_rules('customerName','Name','required');
-         $this->form_validation->set_rules('kontakpic','kontakpic','required');
+        $this->form_validation->set_rules('kontakpic','kontakpic','required');
+        $this->form_validation->set_rules('jumlahpeserta','jumlahpeserta','required');
         // $this->form_validation->set_rules('customerId','Customer','trim|required|numeric|xss_clean');
         
         if($this->form_validation->run() == FALSE)
@@ -121,6 +123,7 @@ class Booking extends BaseController
             $bookingComments = $this->input->post('bookingComments');
             $customerName = $this->input->post('customerName');
             $kontakpic = $this->input->post('kontakpic');
+            $jumlahpeserta = $this->input->post('jumlahpeserta');
             // $customerId = $this->input->post('customerId');
 
             // $date = DateTime::createFromFormat('d/m/Y hh:mm', $startDate);
@@ -131,6 +134,7 @@ class Booking extends BaseController
             $bookingInfo = array('bookStartDate'=>$startDate, 'bookEndDate'=>$endDate, 'roomId'=>$roomId,
                                 'customerName'=>$customerName,
                                 'kontakpic'=>$kontakpic,
+                                'jumlahpeserta'=>$jumlahpeserta,
                                 'bookingDtm'=>date('Y-m-d H:i:sa'),
                                 'bookingComments'=>$bookingComments,
                                 'createdBy'=>$this->vendorId, 'createdDtm'=>date('Y-m-d H:i:sa'));
@@ -147,6 +151,21 @@ class Booking extends BaseController
             if($result > 0)
             {
                 $this->session->set_flashdata('success', 'Success Booking');
+                require APPPATH . 'views/vendor/autoload.php';
+
+                $options = array(
+                    'cluster' => 'ap1',
+                    'useTLS' => true
+                );
+                $pusher = new Pusher\Pusher(
+                    '71ca269b0696ec609f21',
+                    'd015975b7af5bb85aa40',
+                    '1310710',
+                    $options
+                );
+
+                $data = 'Booking Baru di Booking Room System';
+                $pusher->trigger('my-channel', 'my-event', $data);
             }
             else
             {

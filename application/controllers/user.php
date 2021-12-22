@@ -106,7 +106,7 @@ class User extends BaseController
             $this->form_validation->set_rules('email','Email','trim|required|xss_clean|max_length[128]');
             $this->form_validation->set_rules('password','Password','required|max_length[20]');
             $this->form_validation->set_rules('cpassword','Confirm Password','trim|required|matches[password]|max_length[20]');
-            $this->form_validation->set_rules('role','Role','trim|required|numeric');
+            $this->form_validation->set_rules('role','Role','trim|required|max_length[20]|xss_clean');
             $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]|xss_clean');
             
             if($this->form_validation->run() == FALSE)
@@ -190,6 +190,8 @@ class User extends BaseController
             $this->form_validation->set_rules('cpassword','Confirm Password','matches[password]|max_length[20]');
             $this->form_validation->set_rules('role','Role','trim|required|numeric');
             $this->form_validation->set_rules('mobile','Mobile Number','required|min_length[10]|xss_clean');
+
+            $this->form_validation->set_rules('divisi','Divisi','trim|required|max_length[128]|xss_clean');
             
             if($this->form_validation->run() == FALSE)
             {
@@ -202,18 +204,19 @@ class User extends BaseController
                 $password = $this->input->post('password');
                 $roleId = $this->input->post('role');
                 $mobile = $this->input->post('mobile');
+                $divisi = $this->input->post('divisi');
                 
                 $userInfo = array();
                 
                 if(empty($password))
                 {
                     $userInfo = array('userNIK'=>$email, 'roleId'=>$roleId, 'userName'=>$name,
-                                    'userPhone'=>$mobile, 'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:sa'));
+                                    'userPhone'=>$mobile,'divisi' => $divisi, 'updatedBy'=>$this->vendorId, 'updatedDtm'=>date('Y-m-d H:i:sa'));
                 }
                 else
                 {
                     $userInfo = array('userNIK'=>$email, 'userPassword'=>getHashedPassword($password), 'roleId'=>$roleId,
-                        'userName'=>ucwords($name), 'userPhone'=>$mobile, 'updatedBy'=>$this->vendorId, 
+                        'userName'=>ucwords($name), 'divisi' => $divisi,'userPhone'=>$mobile, 'updatedBy'=>$this->vendorId, 
                         'updatedDtm'=>date('Y-m-d H:i:sa'));
                 }
                 

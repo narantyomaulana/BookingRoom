@@ -63,8 +63,9 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="role">Role</label>
-                                        <select class="form-control required" id="role" name="role">
-                                            <option value="0">Select Role</option>
+                                        <input type="text" class="form-control required" id="role" name="role" maxlength="50">
+                                        <!-- <select class="form-control required" id="role" name="role"> -->
+                                            <!-- <option value="0">Select Role</option>
                                             <?php
                                             if(!empty($roles))
                                             {
@@ -75,7 +76,7 @@
                                                     <?php
                                                 }
                                             }
-                                            ?>
+                                            ?> -->
                                         </select>
                                     </div>
                                 </div>    

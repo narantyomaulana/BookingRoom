@@ -52,6 +52,8 @@ $selected = "selected='selected'";
                         <th>Kegiatan</th>
                         <th>Booking Date</th>
                         <th>Kontak PIC</th>
+                        <th>Jumlah Peserta</th>
+
 
                         
                         <th class="text-center">Actions</th>
@@ -74,6 +76,7 @@ $selected = "selected='selected'";
                         <td><?= $record->bookingComments ?></td>
                         <td><?= $record->bookingDtm ?></td>
                         <td><?= $record->kontakpic ?></td>
+                        <td><?= $record->jumlahpeserta ?></td>
                         <td class="text-center">
                           <!-- <a href="<?php echo base_url().'editOldBooking/'.$record->bookingId; ?>" class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a> -->
                           <a href="#" data-bookid="<?php echo $record->bookingId; ?>" class="deleteBooking btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>

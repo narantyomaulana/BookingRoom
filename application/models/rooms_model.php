@@ -77,8 +77,8 @@ class Rooms_model extends CI_Model
         $this->db->from('ldg_rooms as BaseTbl');
         $this->db->join('ldg_room_sizes AS RS', 'RS.sizeId = BaseTbl.roomSizeId');
         $this->db->join('ldg_floor AS FR', 'FR.floorId = BaseTbl.floorId');
-        $this->db->where('BaseTbl.roomId NOT IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0)',NULL,FALSE);
-        $this->db->or_where('BaseTbl.roomId  IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0 AND bookEndDate <= now())',NULL,FALSE);
+        $this->db->where('BaseTbl.roomId IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0)',NULL,FALSE);
+        $this->db->or_where('BaseTbl.roomId NOT IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0 AND bookEndDate <= now())',NULL,FALSE);
         // $this->db->or_where('BaseTbl.roomId NOT IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0 AND bookEndDate > now())',NULL,FALSE);
         $query = $this->db->get();
         $result = $query->result();
@@ -186,12 +186,13 @@ class Rooms_model extends CI_Model
     function getRuanganFull()
     {
         $this->db->select('BaseTbl.roomId, BaseTbl.roomNumber, BaseTbl.roomSizeId, RS.sizeTitle, RS.sizeDescription,
-                            BaseTbl.floorId, FR.floorName, FR.floorCode, BK.bookStartDate, BK.bookEndDate, BK.bookingComments, BK.customerName');
+                            BaseTbl.floorId, FR.floorName, FR.floorCode, BK.bookStartDate, BK.bookEndDate, BK.bookingComments, BK.customerName, BK.kontakpic,BK.jumlahpeserta');
         $this->db->from('ldg_rooms as BaseTbl');
         $this->db->join('ldg_room_sizes AS RS', 'RS.sizeId = BaseTbl.roomSizeId');
         $this->db->join('ldg_floor AS FR', 'FR.floorId = BaseTbl.floorId');
         $this->db->join('ldg_bookings as BK','BK.roomId = BaseTbl.roomId');
         $this->db->where('BaseTbl.roomId IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0)',NULL,FALSE);
+        $this->db->where('BK.isDeleted',0);
         $this->db->where('BK.bookEndDate >=',date('Y-m-d H:i'));
         $this->db->where('BK.bookStartDate <=',date('Y-m-d H:i'));
         $query = $this->db->get();
@@ -201,12 +202,13 @@ class Rooms_model extends CI_Model
 
     function getbookinglist(){
         $this->db->select('BaseTbl.roomId, BaseTbl.roomNumber, BaseTbl.roomSizeId, RS.sizeTitle, RS.sizeDescription,
-                            BaseTbl.floorId, FR.floorName, FR.floorCode, BK.bookStartDate, BK.bookEndDate, BK.bookingComments, BK.customerName');
+                            BaseTbl.floorId, FR.floorName, FR.floorCode, BK.bookStartDate, BK.bookEndDate, BK.bookingComments, BK.customerName, BK.kontakpic,BK.jumlahpeserta');
         $this->db->from('ldg_rooms as BaseTbl');
         $this->db->join('ldg_room_sizes AS RS', 'RS.sizeId = BaseTbl.roomSizeId');
         $this->db->join('ldg_floor AS FR', 'FR.floorId = BaseTbl.floorId');
         $this->db->join('ldg_bookings as BK','BK.roomId = BaseTbl.roomId');
         $this->db->where('BaseTbl.roomId IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0)',NULL,FALSE);
+        $this->db->where('BK.isDeleted',0);
         $this->db->where('BK.bookEndDate >=',date('Y-m-d H:i'));
         $this->db->where('BK.bookStartDate >=',date('Y-m-d H:i'));
         $query = $this->db->get();

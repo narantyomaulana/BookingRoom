@@ -38,13 +38,15 @@
 |
 */
 
-$route['default_controller'] = "login";
+$route['default_controller'] = "Login";
 $route['404_override'] = 'error';
 
 
 /*********** USER DEFINED ROUTES *******************/
 
-$route['loginMe'] = 'login/loginMe';
+$route['loginMe'] = 'Login/loginMe';
+$route['register'] = 'Login/register';
+$route['registerMe'] = 'Login/registerMe';
 $route['dashboard'] = 'user';
 $route['logout'] = 'user/logout';
 

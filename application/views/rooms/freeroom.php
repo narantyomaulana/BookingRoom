@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-book" aria-hidden="true"></i> Ruangan Kosong
+        <i class="fa fa-book" aria-hidden="true"></i> List Ruangan
       </h1>
     </section>
     <section class="content">
@@ -12,7 +12,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Ruangan Kosong</h3>
+                    <h3 class="box-title">List Ruangan</h3>
                     <div class="box-tools">
                         <a class="btn btn-primary" href="<?= base_url(); ?>addNewBooking"><i class="fa fa-plus" aria-hidden="true"></i> Pesan Ruangan</a>
                     </div>
