@@ -36,7 +36,7 @@
                       <th>Name</th>
                       <th>Email atau NIK</th>
                       <th>Mobile</th>
-                      <th>Role</th>
+                      <th>Divisi/Unit</th>
                       <th class="text-center">Actions</th>
                     </tr>
                     <?php
@@ -49,7 +49,7 @@
                       <td><?php echo $record->userName ?></td>
                       <td><?php echo $record->userNIK ?></td>
                       <td><?php echo $record->userPhone ?></td>
-                      <td><?php echo $record->role ?></td>
+                      <td><?php echo $record->divisi ?></td>
                       <td class="text-center">
                           <a href="<?php echo base_url().'editOld/'.$record->userId; ?>" class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a>
                           <a href="#" data-userid="<?php echo $record->userId; ?>" class="deleteUser btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>

@@ -16,7 +16,41 @@
          folder instead of downloading all of them to reduce the load. -->
     <link href="<?php echo base_url(); ?>assets/dist/css/skins/_all-skins.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" type="text/css" href="http://cdn.datatables.net/1.11.3/css/jquery.dataTables.min.css">
-    
+    <script src="https://js.pusher.com/7.0/pusher.min.js"></script>
+    <script>
+
+      // Enable pusher logging - don't include this in production
+      Pusher.logToConsole = true;
+
+      var pusher = new Pusher('71ca269b0696ec609f21', {
+        cluster: 'ap1'
+      });
+
+      var channel = pusher.subscribe('my-channel');
+      channel.bind('my-event', function(data) {
+        const notification = new Notification("BookingRoom",{
+          body: JSON.stringify(data)
+        });
+      });
+
+      function showNotif(){
+        const notification = new Notification("New",{
+          body: "yo bro"
+        });
+      }
+
+      console.log(Notification.permission);
+
+      if(Notification.permission === "granted"){
+        // showNotif();
+      }else if(Notification.permission !== "denied"){
+        Notification.requestPermission().then(permission => {
+          if (permission === "granted"){
+            // showNotif();
+          }
+        });
+      }
+    </script>
     <style>
     	.error{
     		color:red;
@@ -72,7 +106,7 @@
                     <img src="<?php echo base_url(); ?>assets/dist/img/avatar.png" class="img-circle" alt="User Image" />
                     <p>
                       <?php echo $name; ?>
-                      <small><?php echo $role_text; ?></small>
+                      <small><?php echo $divisi; ?></small>
                     </p>
                   </li>
                   <!-- Menu Footer-->
@@ -110,6 +144,18 @@
                 <span>New Booking</span>
               </a>
             </li>
+
+            <li class="treeview">
+              <a href="<?php echo base_url(); ?>absenrapat">
+                <i class="fa fa-clipboard"></i> <span>Absen Rapat</span></i>
+              </a>
+            </li>
+           <!--  <li class="treeview">
+              <a href="<?php echo base_url(); ?>reportabsen">
+                <i class="fa fa-file"></i> <span>Report Absen</span></i>
+              </a>
+            </li> -->
+
             <?php
             if($role == ROLE_ADMIN || $role == ROLE_MANAGER)
             {
@@ -143,6 +189,8 @@
                     <i class="fa fa-circle-o"></i> Ruangan
                   </a>
                 </li>
+
+                
                 <!--
                 <li>
                   <a href="<?php echo base_url(); ?>baseFareListing" >
@@ -164,6 +212,17 @@
               <a href="<?php echo base_url(); ?>userListing">
                 <i class="fa fa-users"></i>
                 <span>Users</span>
+              </a>
+            </li>
+            <!-- Absen Rapat -->
+            <!-- <li class="treeview">
+              <a href="<?php echo base_url(); ?>absenrapat">
+                <i class="fa fa-clipboard"></i> <span>Absen Rapat</span></i>
+              </a>
+            </li> -->
+            <li class="treeview">
+              <a href="<?php echo base_url(); ?>reportabsen">
+                <i class="fa fa-file"></i> <span>Report Absen</span></i>
               </a>
             </li>
             <!---

@@ -13,19 +13,29 @@
 			<th>Kegiatan</th>
 			<th>Tanggal Pemesanan</th>
 			<th>Kontak PIC</th>
+			<th>Jumlah Peserta</th>
+
 		</tr>
 		<?php
 		$no=1;
 		foreach ($booking as $bkg): ?>
 			
 		<tr>
-			<td><?= $bkg->customerName ?></td>
+			<td>
+				<center>
+				<?= $bkg->customerName ?>
+				</center>	
+				</td>
             <td><?= $bkg->bookStartDate ?></td>
             <td><?= $bkg->bookEndDate ?></td>
             <td><?= $bkg->roomNumber ?><br>(<?= $bkg->floorCode ?>)<br><?= $bkg->sizeTitle ?></td>
             <td><?= $bkg->bookingComments ?></td>
             <td><?= $bkg->bookingDtm ?></td>
-            <td><?= $bkg->kontakpic ?></td>
+            <td>
+            <center>
+            <?= $bkg->kontakpic ?>
+            </center></td>
+            <td><?= $bkg->jumlahpeserta ?></td>
 		</tr>
 
 		<?php endforeach; ?>

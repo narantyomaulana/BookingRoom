@@ -72,6 +72,7 @@ class Login extends CI_Controller
                     $sessionArray = array('userId'=>$res->userId,                    
                                             'role'=>$res->roleId,
                                             'roleText'=>$res->role,
+                                            'divisi'=>$res->divisi,
                                             'name'=>$res->userName,
                                             'isLoggedIn' => TRUE
                                     );
@@ -88,6 +89,46 @@ class Login extends CI_Controller
                 redirect('/login');
             }
         }
+    }
+
+    public function register(){
+        $this->load->view('register');
+    }
+
+    public function registerMe(){
+        $this->load->library('form_validation');
+            
+        $userId = $this->input->post('userId');
+        
+        $this->form_validation->set_rules('userName','Full Name','trim|required|max_length[128]|xss_clean');
+        $this->form_validation->set_rules('userNik','Email','trim|required|xss_clean|max_length[128]');
+        $this->form_validation->set_rules('userPassword','Password','matches[cpassword]|max_length[20]');
+        $this->form_validation->set_rules('divisi','Divisi','required|xss_clean');
+        $this->form_validation->set_rules('userPhone','userPhone','required|xss_clean');
+        $name = ucwords(strtolower($this->input->post('userName')));
+            $email = $this->input->post('userNik');
+            $password = $this->input->post('userPassword');
+            $roleId = 0;
+            $divisi = $this->input->post('divisi');
+            $userPhone = $this->input->post('userPhone');
+            $userInfo = array();
+            
+            $userInfo = array('userNIK'=>$email, 'userPassword'=>getHashedPassword($password), 'roleId'=>3, 'userName'=> $name, 'divisi' => $divisi,
+                                    'userPhone'=>$userPhone, 'createdBy'=>1, 'createdDtm'=>date('Y-m-d H:i:sa'));
+            
+            $this->load->model('user_model');
+                $result = $this->user_model->addNewUser($userInfo); 
+            
+            if($result == true)
+            {
+                $this->session->set_flashdata('success', 'User updated successfully');
+            }
+            else
+            {
+                $this->session->set_flashdata('error', 'User updation failed');
+            }
+            
+            redirect('dashboard');
     }
 
     /**

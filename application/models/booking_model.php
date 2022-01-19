@@ -38,7 +38,7 @@ class Booking_model extends CI_Model
     function bookingListing($searchText, $searchRoomId, $searchFloorId, $searchRoomSizeId)
     {
         $this->db->select('BaseTbl.bookingId, BaseTbl.bookingDtm, BaseTbl.roomId,
-                            BaseTbl.bookStartDate,BaseTbl.customerName, BaseTbl.bookEndDate, BaseTbl.bookingComments,BaseTbl.kontakpic,
+                            BaseTbl.bookStartDate,BaseTbl.customerName, BaseTbl.bookEndDate, BaseTbl.bookingComments,BaseTbl.kontakpic,BaseTbl.jumlahpeserta,
                             
                             R.roomNumber, R.roomSizeId, R.floorId, RS.sizeTitle, RS.sizeDescription,
                             F.floorName, F.floorCode');
@@ -64,7 +64,7 @@ class Booking_model extends CI_Model
     }
     function print_booking(){
         $this->db->select('BaseTbl.bookingId, BaseTbl.bookingDtm, BaseTbl.roomId,
-                            BaseTbl.bookStartDate,BaseTbl.customerName, BaseTbl.bookEndDate, BaseTbl.bookingComments,BaseTbl.kontakpic,
+                            BaseTbl.bookStartDate,BaseTbl.customerName, BaseTbl.bookEndDate, BaseTbl.bookingComments,BaseTbl.kontakpic,BaseTbl.jumlahpeserta,
                             
                             R.roomNumber, R.roomSizeId, R.floorId, RS.sizeTitle, RS.sizeDescription,
                             F.floorName, F.floorCode');
@@ -119,8 +119,8 @@ class Booking_model extends CI_Model
         $this->db->from('ldg_bookings AS BaseTbl');
         $this->db->where('BaseTbl.isDeleted', 0);
         $this->db->where('BaseTbl.roomId',$room);
-        $this->db->where('BaseTbl.bookStartDate <=',$bookstart);
-        $this->db->where('BaseTbl.bookEndDate >=',$bookend);
+        $this->db->where("BaseTbl.bookStartDate BETWEEN '$bookstart' AND '$bookend'");
+        $this->db->where("BaseTbl.bookEndDate BETWEEN '$bookstart' AND '$bookend'");
         $query = $this->db->get();
 
         if(count($query->result())){
@@ -134,6 +134,14 @@ class Booking_model extends CI_Model
     {
         $this->db->where('bookingId', $bookId);
         $this->db->update('ldg_bookings', $bookInfo);
+        
+        return $this->db->affected_rows();
+    }
+
+    function deleteAbsen($absenId, $absenInfo)
+    {
+        $this->db->where('id', $absenId);
+        $this->db->update('ldg_absensi', $absenInfo);
         
         return $this->db->affected_rows();
     }
