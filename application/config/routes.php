@@ -67,6 +67,8 @@ $route['addedNewAbsen'] = "absen/addnewabsen";
 $route['reportabsen'] = "absen/reportabsen";
 $route['deleteabsen'] = "absen/deleteAbsen";
 
+$route['deletefreeroom'] = "freeroom/deleteRoom";
+
 
 
 $route['floorsListing'] = 'floors/floorsListing';

@@ -119,8 +119,8 @@ class Booking_model extends CI_Model
         $this->db->from('ldg_bookings AS BaseTbl');
         $this->db->where('BaseTbl.isDeleted', 0);
         $this->db->where('BaseTbl.roomId',$room);
-        $this->db->where('BaseTbl.bookStartDate <=',$bookstart);
-        $this->db->where('BaseTbl.bookEndDate >=',$bookend);
+        $this->db->where("BaseTbl.bookStartDate BETWEEN '$bookstart' AND '$bookend'");
+        $this->db->where("BaseTbl.bookEndDate BETWEEN '$bookstart' AND '$bookend'");
         $query = $this->db->get();
 
         if(count($query->result())>=1){

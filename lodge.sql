@@ -1,11 +1,17 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.4
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
+
 -- Generation Time: Jan 11, 2022 at 08:52 AM
 -- Server version: 10.4.17-MariaDB
 -- PHP Version: 7.3.27
+
+-- Waktu pembuatan: 22 Des 2021 pada 02.46
+-- Versi server: 10.4.14-MariaDB
+-- Versi PHP: 7.4.11
+
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -24,6 +30,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+
 -- Table structure for table `ldg_absensi`
 --
 
@@ -55,6 +62,9 @@ INSERT INTO `ldg_absensi` (`id`, `booking_id`, `nama`, `nik`, `email`, `created_
 
 --
 -- Table structure for table `ldg_bookings`
+
+-- Struktur dari tabel `ldg_bookings`
+
 --
 
 CREATE TABLE `ldg_bookings` (
@@ -75,7 +85,11 @@ CREATE TABLE `ldg_bookings` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
+
 -- Dumping data for table `ldg_bookings`
+
+-- Dumping data untuk tabel `ldg_bookings`
+
 --
 
 INSERT INTO `ldg_bookings` (`bookingId`, `customerName`, `bookingDtm`, `roomId`, `bookStartDate`, `bookEndDate`, `bookingComments`, `isDeleted`, `createdBy`, `createdDtm`, `updatedBy`, `updatedDtm`, `kontakpic`, `jumlahpeserta`) VALUES
@@ -125,6 +139,7 @@ INSERT INTO `ldg_bookings` (`bookingId`, `customerName`, `bookingDtm`, `roomId`,
 (178, 'tester', '2021-12-21 12:19:01', 3, '2021-12-21 13:00:00', '2021-12-21 14:00:00', 'rapat', 1, 1, '2021-12-21 12:19:01', 1, '2021-12-21 12:30:29', '0819278393', '8'),
 (179, 'ipul', '2021-12-21 12:22:01', 2, '2021-12-21 12:00:00', '2021-12-20 14:00:00', 'rapat', 1, 1, '2021-12-21 12:22:01', 1, '2021-12-21 12:30:33', '019182732828', '15'),
 (180, 'anis', '2021-12-21 12:24:17', 3, '2021-12-22 13:00:00', '2021-12-22 14:00:00', 'tess', 1, 1, '2021-12-21 12:24:17', 1, '2021-12-21 12:30:24', '9823982', '15'),
+
 (181, 'ipul', '2021-12-21 14:02:08', 3, '2021-12-21 14:00:00', '2021-12-21 15:00:00', 'tess', 1, 1, '2021-12-21 14:02:08', 1, '2021-12-23 11:17:51', '9823982', '7'),
 (182, 'tester', '2021-12-21 14:09:49', 2, '2021-12-21 14:00:00', '2021-12-21 15:00:00', 'tester', 1, 1, '2021-12-21 14:09:49', 1, '2021-12-23 11:18:56', '088997', '8'),
 (183, 'ree', '2021-12-21 14:10:32', 1, '2021-12-21 14:00:00', '2021-12-21 15:00:00', 'tess', 1, 1, '2021-12-21 14:10:32', 1, '2021-12-23 11:18:59', '899233', '5'),
@@ -174,10 +189,23 @@ INSERT INTO `ldg_bookings` (`bookingId`, `customerName`, `bookingDtm`, `roomId`,
 (227, 'Septhian', '2022-01-11 12:44:29', 3, '2022-01-14 08:00:00', '2022-01-14 17:00:00', 'Testcall DCS dan Vendor VIMS', 0, 1, '2022-01-11 12:44:29', NULL, NULL, '082240489900', '10'),
 (228, 'Martarini', '2022-01-11 13:18:11', 2, '2022-01-11 14:00:00', '2022-01-11 17:00:00', 'Vicon 1on1 Capex 2022', 0, 35, '2022-01-11 13:18:11', NULL, NULL, 'Martarini', '5');
 
+(181, 'ipul', '2021-12-21 14:02:08', 3, '2021-12-21 14:00:00', '2021-12-21 15:00:00', 'tess', 0, 1, '2021-12-21 14:02:08', NULL, NULL, '9823982', '7'),
+(182, 'tester', '2021-12-21 14:09:49', 2, '2021-12-21 14:00:00', '2021-12-21 15:00:00', 'tester', 0, 1, '2021-12-21 14:09:49', NULL, NULL, '088997', '8'),
+(183, 'ree', '2021-12-21 14:10:32', 1, '2021-12-21 14:00:00', '2021-12-21 15:00:00', 'tess', 0, 1, '2021-12-21 14:10:32', NULL, NULL, '899233', '5'),
+(184, 'qq', '2021-12-21 14:11:31', 4, '2021-12-21 14:00:00', '2021-12-21 15:00:00', 'rqqq', 0, 1, '2021-12-21 14:11:31', NULL, NULL, '89797', '30'),
+(185, 'tester', '2021-12-21 14:12:31', 3, '2021-12-21 15:00:00', '2021-12-21 16:00:00', 'rapat', 0, 1, '2021-12-21 14:12:31', NULL, NULL, '019182732828', '6'),
+(186, 'tester', '2021-12-21 14:13:29', 2, '2021-12-21 16:00:00', '2021-12-21 17:00:00', 'tester', 0, 1, '2021-12-21 14:13:29', NULL, NULL, '0819278393', '6'),
+(187, 'galuh', '2021-12-21 14:13:58', 3, '2021-12-21 17:00:00', '2021-12-21 18:00:00', 'rapat', 1, 1, '2021-12-21 14:13:58', 1, '2021-12-21 15:21:39', '0819278393', '6'),
+(188, 'ipul', '2021-12-21 14:15:05', 3, '2021-12-21 18:00:00', '2021-12-21 19:00:00', 'tester', 0, 1, '2021-12-21 14:15:05', NULL, NULL, '0819278393', '15'),
+(189, 'tester', '2021-12-21 14:16:04', 3, '2021-12-21 20:00:00', '2021-12-21 21:00:00', 'rapat', 0, 1, '2021-12-21 14:16:04', NULL, NULL, '9823982', '6'),
+(190, 'Teeess', '2021-12-21 15:22:26', 2, '2021-12-21 17:00:00', '2021-12-21 19:00:00', 'Tess Aja', 0, 1, '2021-12-21 15:22:26', NULL, NULL, '09898', '8 Orang'),
+(191, 'teeeess', '2021-12-21 15:23:26', 3, '2021-12-21 16:00:00', '2021-12-21 18:00:00', 'rqqq', 0, 1, '2021-12-21 15:23:26', NULL, NULL, '999', '10');
+
+
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ldg_customer`
+-- Struktur dari tabel `ldg_customer`
 --
 
 CREATE TABLE `ldg_customer` (
@@ -194,7 +222,7 @@ CREATE TABLE `ldg_customer` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ldg_customer`
+-- Dumping data untuk tabel `ldg_customer`
 --
 
 INSERT INTO `ldg_customer` (`customerId`, `customerName`, `customerAddress`, `customerPhone`, `customerEmail`, `isDeleted`, `createdBy`, `createdDtm`, `updatedBy`, `updatedDtm`) VALUES
@@ -204,7 +232,7 @@ INSERT INTO `ldg_customer` (`customerId`, `customerName`, `customerAddress`, `cu
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ldg_floor`
+-- Struktur dari tabel `ldg_floor`
 --
 
 CREATE TABLE `ldg_floor` (
@@ -220,7 +248,7 @@ CREATE TABLE `ldg_floor` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Floor Table';
 
 --
--- Dumping data for table `ldg_floor`
+-- Dumping data untuk tabel `ldg_floor`
 --
 
 INSERT INTO `ldg_floor` (`floorId`, `floorCode`, `floorName`, `floorDescription`, `isDeleted`, `createdBy`, `createdDtm`, `updatedBy`, `updatedDtm`) VALUES
@@ -232,7 +260,7 @@ INSERT INTO `ldg_floor` (`floorId`, `floorCode`, `floorName`, `floorDescription`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ldg_lodge`
+-- Struktur dari tabel `ldg_lodge`
 --
 
 CREATE TABLE `ldg_lodge` (
@@ -253,7 +281,7 @@ CREATE TABLE `ldg_lodge` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ldg_reset_password`
+-- Struktur dari tabel `ldg_reset_password`
 --
 
 CREATE TABLE `ldg_reset_password` (
@@ -270,7 +298,7 @@ CREATE TABLE `ldg_reset_password` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `ldg_reset_password`
+-- Dumping data untuk tabel `ldg_reset_password`
 --
 
 INSERT INTO `ldg_reset_password` (`id`, `email`, `activation_id`, `agent`, `client_ip`, `isDeleted`, `createdBy`, `createdDtm`, `updatedBy`, `updatedDtm`) VALUES
@@ -279,7 +307,7 @@ INSERT INTO `ldg_reset_password` (`id`, `email`, `activation_id`, `agent`, `clie
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ldg_roles`
+-- Struktur dari tabel `ldg_roles`
 --
 
 CREATE TABLE `ldg_roles` (
@@ -288,7 +316,7 @@ CREATE TABLE `ldg_roles` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Information of roles';
 
 --
--- Dumping data for table `ldg_roles`
+-- Dumping data untuk tabel `ldg_roles`
 --
 
 INSERT INTO `ldg_roles` (`roleId`, `role`) VALUES
@@ -299,7 +327,7 @@ INSERT INTO `ldg_roles` (`roleId`, `role`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ldg_rooms`
+-- Struktur dari tabel `ldg_rooms`
 --
 
 CREATE TABLE `ldg_rooms` (
@@ -315,7 +343,7 @@ CREATE TABLE `ldg_rooms` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Information of rooms';
 
 --
--- Dumping data for table `ldg_rooms`
+-- Dumping data untuk tabel `ldg_rooms`
 --
 
 INSERT INTO `ldg_rooms` (`roomId`, `roomNumber`, `roomSizeId`, `floorId`, `isDeleted`, `createdBy`, `createdDtm`, `updatedBy`, `updatedDtm`) VALUES
@@ -327,7 +355,7 @@ INSERT INTO `ldg_rooms` (`roomId`, `roomNumber`, `roomSizeId`, `floorId`, `isDel
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ldg_room_base_fare`
+-- Struktur dari tabel `ldg_room_base_fare`
 --
 
 CREATE TABLE `ldg_room_base_fare` (
@@ -346,7 +374,7 @@ CREATE TABLE `ldg_room_base_fare` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Dumping data for table `ldg_room_base_fare`
+-- Dumping data untuk tabel `ldg_room_base_fare`
 --
 
 INSERT INTO `ldg_room_base_fare` (`bfId`, `sizeId`, `baseFareHour`, `baseFareDay`, `serviceTax`, `serviceCharge`, `fareTotal`, `isDeleted`, `createdBy`, `createdDtm`, `updatedBy`, `updatedDtm`) VALUES
@@ -359,7 +387,7 @@ INSERT INTO `ldg_room_base_fare` (`bfId`, `sizeId`, `baseFareHour`, `baseFareDay
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ldg_room_sizes`
+-- Struktur dari tabel `ldg_room_sizes`
 --
 
 CREATE TABLE `ldg_room_sizes` (
@@ -374,19 +402,23 @@ CREATE TABLE `ldg_room_sizes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Information of room sizes';
 
 --
--- Dumping data for table `ldg_room_sizes`
+-- Dumping data untuk tabel `ldg_room_sizes`
 --
 
 INSERT INTO `ldg_room_sizes` (`sizeId`, `sizeTitle`, `sizeDescription`, `isDeleted`, `createdBy`, `createdDtm`, `updatedBy`, `updatedDtm`) VALUES
 (1, 'Kapasitas 5-7 Orang (Prokes)', '<ol>\r\n<li>Televisi</li>\r\n<li>AC</li>\r\n<li>Meja</li>\r\n<li>Kursi</li>\r\n<li>Air Purifier</li>\r\n<li>Smoke Detector</li>\r\n<li>Internet (Wifi + LAN)</li>\r\n</ol>', 0, 1, '2017-01-04 18:05:53', 1, '2021-12-21 15:31:25'),
 (2, 'Kapasitas 6-8 Orang (Prokes)', '<ol>\r\n<li>Televisi</li>\r\n<li>Kursi</li>\r\n<li>Meja</li>\r\n<li>AC</li>\r\n<li>Tempat Sampah</li>\r\n<li>Air Purifier</li>\r\n<li>Smoke Detector</li>\r\n<li>Internet (Wifi + LAN)</li>\r\n</ol>', 0, 1, '2017-01-04 18:07:56', 1, '2021-12-21 15:31:39'),
 (3, 'Kapasitas 30-35 Orang (Prokes)', '<p> </p>\r\n<ol>\r\n<li>Kursi</li>\r\n<li>Meja</li>\r\n<li>Proyektor</li>\r\n<li>Sound Sytem</li>\r\n<li>Panggung</li>\r\n<li>AC</li>\r\n<li>Microphone</li>\r\n<li>Smoke Detector</li>\r\n<li>Alat Pemadam Kebakaran</li>\r\n<li>Internet</li>\r\n<li>Toilet (Pria dan Wanita)</li>\r\n</ol>', 0, 1, '2017-01-04 18:09:09', 1, '2021-12-21 15:31:51'),
+
 (6, 'Kapasitas 6-10 Orang (Prokes)', '<ol>\r\n<li>Televisi</li>\r\n<li>Proyektor</li>\r\n<li>Kursi</li>\r\n<li>Toilet (Pria dan Wanita)</li>\r\n<li>AC</li>\r\n<li>Komputer</li>\r\n<li>Microphone</li>\r\n<li>Telpon</li>\r\n<li>Smoke Detector</li>\r\n<li>Internet (Wifi + LAN)</li>\r\n</ol>', 0, 1, '2021-10-22 17:21:11', 1, '2021-12-22 08:50:07');
+
+(6, 'Kapasitas 6-10 Orang (Prokes)', '<ol>\r\n<li>Televisi</li>\r\n<li>Proyektor</li>\r\n<li>Kursi</li>\r\n<li>Toilet 2 (Pria dan Wanita)</li>\r\n<li>AC</li>\r\n<li>Komputer</li>\r\n<li>Microphone</li>\r\n<li>Telpon</li>\r\n<li>Smoke Detector</li>\r\n<li>Internet (Wifi + LAN)</li>\r\n</ol>', 0, 1, '2021-10-22 17:21:11', 1, '2021-12-21 15:32:02');
+
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ldg_users`
+-- Struktur dari tabel `ldg_users`
 --
 
 CREATE TABLE `ldg_users` (
@@ -406,7 +438,7 @@ CREATE TABLE `ldg_users` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='Information of administrative users';
 
 --
--- Dumping data for table `ldg_users`
+-- Dumping data untuk tabel `ldg_users`
 --
 
 INSERT INTO `ldg_users` (`userId`, `userNIK`, `userPassword`, `userName`, `userPhone`, `userAddress`, `roleId`, `divisi`, `isDeleted`, `createdBy`, `createdDtm`, `updatedBy`, `updatedDtm`) VALUES
@@ -428,6 +460,7 @@ INSERT INTO `ldg_users` (`userId`, `userNIK`, `userPassword`, `userName`, `userP
 (23, '00000', '$2y$10$nYsemghrzCTRzjN..8CHku5fB.qwht4bySrPu6jz8sIwwU8uDdXJ6', 'Fikri', '08712382398', '', 3, 'War Room', 0, 1, '2021-11-15 08:20:47', NULL, NULL),
 (24, '930434', '$2y$10$YlmkcVOc3lloWX4MEU5cc.4TaV9lI71UdmU6kikB7.ErVdJVrLMNO', 'Snf Anbarsari', '082218115910', '', 3, 'HOME SERVICE YOGYAKARTA', 0, 1, '2021-11-17 11:46:36', NULL, NULL),
 (25, '930005', '$2y$10$ZX0YteWX56hwWLGNxrdOber5lEBLDrVgPujG7BfIE.tXx0Kez/HJ2', 'Herbriawan Wiratama Dwi Wardhana', '081227165324', '', 3, 'HERO', 0, 1, '2021-11-17 12:47:10', NULL, NULL),
+
 (26, '19104048', '$2y$10$eAVxURV2OeEx6j7qud2Ktuj9GPWQxemvQiySXYNtGxivw4J3UO2Gq', 'Olan', '081393436458', '', 3, 'SAS', 0, 1, '2021-12-21 15:10:07', 1, '2021-12-21 15:28:03'),
 (27, '950121', '$2y$10$Q0Ph1yiaLkqZKdbCsiTOZeCkI.r1zXpqII9Y6PuHyIF7l4KJQ89Ae', 'Saddek Syafrullah', '081277557186', '', 3, 'Access Optima & Construction SPV', 0, 1, '2021-12-22 11:05:00', NULL, NULL),
 (28, '910005', '$2y$10$c70kvwvU9rthd17VjRCTaOG0b0KwPnmvILDlacjIc0lbhpRn4Njz6', 'Kamilatun', '082118299359', '', 3, 'BS', 0, 1, '2021-12-22 14:55:28', NULL, NULL),
@@ -448,11 +481,14 @@ INSERT INTO `ldg_users` (`userId`, `userNIK`, `userPassword`, `userName`, `userP
 (45, '965231', '$2y$10$VMDuXEu6eEhnyQg202ZhE.Q9z2H.wC9BEfYz4zHVs6o3ViJG95SxK', 'Ilham Fadhlurrohman', '081321424588', '', 3, 'DBS', 0, 1, '2022-01-10 09:35:10', NULL, NULL),
 (46, '930414', '$2y$10$fk287JyA7/t2yVELbumZ5.k6Iq.NgXCmNvpuYrmUK0uypCsrHmQ5K', 'Septhian', '082240469900', '', 3, 'Arnet', 0, 1, '2022-01-10 10:39:21', NULL, NULL);
 
+(26, '19104048', '$2y$10$eAVxURV2OeEx6j7qud2Ktuj9GPWQxemvQiySXYNtGxivw4J3UO2Gq', 'Olan', '081393436458', '', 3, 'SAS', 0, 1, '2021-12-21 15:10:07', 1, '2021-12-21 15:28:03');
+
 --
 -- Indexes for dumped tables
 --
 
 --
+
 -- Indexes for table `ldg_absensi`
 --
 ALTER TABLE `ldg_absensi`
@@ -460,70 +496,74 @@ ALTER TABLE `ldg_absensi`
 
 --
 -- Indexes for table `ldg_bookings`
+
+-- Indeks untuk tabel `ldg_bookings`
+
 --
 ALTER TABLE `ldg_bookings`
   ADD PRIMARY KEY (`bookingId`);
 
 --
--- Indexes for table `ldg_customer`
+-- Indeks untuk tabel `ldg_customer`
 --
 ALTER TABLE `ldg_customer`
   ADD PRIMARY KEY (`customerId`);
 
 --
--- Indexes for table `ldg_floor`
+-- Indeks untuk tabel `ldg_floor`
 --
 ALTER TABLE `ldg_floor`
   ADD PRIMARY KEY (`floorId`),
   ADD UNIQUE KEY `floorCode` (`floorCode`);
 
 --
--- Indexes for table `ldg_lodge`
+-- Indeks untuk tabel `ldg_lodge`
 --
 ALTER TABLE `ldg_lodge`
   ADD PRIMARY KEY (`lodgeId`);
 
 --
--- Indexes for table `ldg_reset_password`
+-- Indeks untuk tabel `ldg_reset_password`
 --
 ALTER TABLE `ldg_reset_password`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `ldg_roles`
+-- Indeks untuk tabel `ldg_roles`
 --
 ALTER TABLE `ldg_roles`
   ADD PRIMARY KEY (`roleId`);
 
 --
--- Indexes for table `ldg_rooms`
+-- Indeks untuk tabel `ldg_rooms`
 --
 ALTER TABLE `ldg_rooms`
   ADD PRIMARY KEY (`roomId`);
 
 --
--- Indexes for table `ldg_room_base_fare`
+-- Indeks untuk tabel `ldg_room_base_fare`
 --
 ALTER TABLE `ldg_room_base_fare`
   ADD PRIMARY KEY (`bfId`);
 
 --
--- Indexes for table `ldg_room_sizes`
+-- Indeks untuk tabel `ldg_room_sizes`
 --
 ALTER TABLE `ldg_room_sizes`
   ADD PRIMARY KEY (`sizeId`);
 
 --
--- Indexes for table `ldg_users`
+-- Indeks untuk tabel `ldg_users`
 --
 ALTER TABLE `ldg_users`
   ADD PRIMARY KEY (`userId`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
+
 -- AUTO_INCREMENT for table `ldg_absensi`
 --
 ALTER TABLE `ldg_absensi`
@@ -535,59 +575,69 @@ ALTER TABLE `ldg_absensi`
 ALTER TABLE `ldg_bookings`
   MODIFY `bookingId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=229;
 
+-- AUTO_INCREMENT untuk tabel `ldg_bookings`
 --
--- AUTO_INCREMENT for table `ldg_customer`
+ALTER TABLE `ldg_bookings`
+  MODIFY `bookingId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=192;
+
+
+--
+-- AUTO_INCREMENT untuk tabel `ldg_customer`
 --
 ALTER TABLE `ldg_customer`
   MODIFY `customerId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
--- AUTO_INCREMENT for table `ldg_floor`
+-- AUTO_INCREMENT untuk tabel `ldg_floor`
 --
 ALTER TABLE `ldg_floor`
   MODIFY `floorId` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT for table `ldg_lodge`
+-- AUTO_INCREMENT untuk tabel `ldg_lodge`
 --
 ALTER TABLE `ldg_lodge`
   MODIFY `lodgeId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT for table `ldg_reset_password`
+-- AUTO_INCREMENT untuk tabel `ldg_reset_password`
 --
 ALTER TABLE `ldg_reset_password`
   MODIFY `id` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
 
 --
--- AUTO_INCREMENT for table `ldg_roles`
+-- AUTO_INCREMENT untuk tabel `ldg_roles`
 --
 ALTER TABLE `ldg_roles`
   MODIFY `roleId` tinyint(4) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- AUTO_INCREMENT for table `ldg_rooms`
+-- AUTO_INCREMENT untuk tabel `ldg_rooms`
 --
 ALTER TABLE `ldg_rooms`
   MODIFY `roomId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=37;
 
 --
--- AUTO_INCREMENT for table `ldg_room_base_fare`
+-- AUTO_INCREMENT untuk tabel `ldg_room_base_fare`
 --
 ALTER TABLE `ldg_room_base_fare`
   MODIFY `bfId` bigint(20) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT for table `ldg_room_sizes`
+-- AUTO_INCREMENT untuk tabel `ldg_room_sizes`
 --
 ALTER TABLE `ldg_room_sizes`
   MODIFY `sizeId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
--- AUTO_INCREMENT for table `ldg_users`
+-- AUTO_INCREMENT untuk tabel `ldg_users`
 --
 ALTER TABLE `ldg_users`
+
   MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=48;
+
+  MODIFY `userId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
