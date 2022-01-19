@@ -3,7 +3,7 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        <i class="fa fa-book" aria-hidden="true"></i> Ruangan Kosong
+        <i class="fa fa-book" aria-hidden="true"></i> List Ruangan
       </h1>
     </section>
     <section class="content">
@@ -12,7 +12,7 @@
             <div class="col-xs-12">
               <div class="box">
                 <div class="box-header">
-                    <h3 class="box-title">Ruangan Kosong</h3>
+                    <h3 class="box-title">List Ruangan</h3>
                     <div class="box-tools">
                         <a class="btn btn-primary" href="<?= base_url(); ?>addNewBooking"><i class="fa fa-plus" aria-hidden="true"></i> Pesan Ruangan</a>
                     </div>
@@ -25,6 +25,8 @@
                       <th>Kapasitas Ruangan</th>
                       <th>Deskripsi Ruangan</th>
                       <th>Lantai</th>
+
+                      <th class="text-center">Actions</th>
                     </tr>
                     <?php
                     if(!empty($freeroom))
@@ -39,6 +41,10 @@
                       <td><?php echo $record->sizeDescription ?></td>
                       <td><?php echo $record->floorCode." - ".$record->floorName; ?></td>
                       
+                      <td class="text-center">
+                          <!-- <a href="<?php echo base_url().'editOldBooking/'.$record->bookingId; ?>" class="btn btn-sm btn-info"><i class="fa fa-pencil"></i></a> -->
+                          <a href="#" id="roomId" data-roomId="<?php echo $record->roomId; ?>" class="deleteabsen btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>
+                      </td>   
                     </tr>
                     <?php
                         }

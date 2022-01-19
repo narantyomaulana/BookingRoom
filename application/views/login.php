@@ -46,8 +46,12 @@
             <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
           </div>
           <div class="form-group has-feedback">
-            <input type="password" class="form-control" placeholder="Password" name="password" required />
+            <input type="password" class="form-control" placeholder="Password" name="password" id="passwordinput" required />
             <span class="glyphicon glyphicon-lock form-control-feedback"></span>
+          </div>
+
+         <div class="checkbox">
+            <label><input type="checkbox" onclick= "tampilPassword()" value="">Show Password</label>
           </div>
           <div class="row">
             <div class="col-xs-8">    
@@ -57,8 +61,13 @@
                 </label>
               </div>  -->                       
             </div><!-- /.col -->
-            <div class="col-xs-4">
-              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Sign In" />
+            <div class="col-xs-12">
+              <input type="submit" class="btn btn-primary btn-block btn-flat" value="Sign In"/>
+              &ensp;
+            </div><!-- /.col -->
+
+            <div class="col-xs-12">
+              <a href="<?php echo base_url(); ?>register" class="btn btn-primary btn-block btn-flat" value="Register">Register</a>
             </div><!-- /.col -->
           </div>
         </form>
@@ -70,5 +79,15 @@
 
     <script src="<?php echo base_url(); ?>assets/js/jQuery-2.1.4.min.js"></script>
     <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+    <script>
+      function tampilPassword() {
+      var x = document.getElementById("passwordinput");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+      }
+    </script>
   </body>
 </html>

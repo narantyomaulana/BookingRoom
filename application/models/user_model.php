@@ -16,15 +16,32 @@ class User_model extends CI_Model
      */
     function getRuanganFree()
     {
-        $this->db->select('BaseTbl.roomId');
+     $now = time();
+        $this->db->select('BaseTbl.roomId, BaseTbl.roomNumber, BaseTbl.roomSizeId, RS.sizeTitle, RS.sizeDescription,
+                            BaseTbl.floorId, FR.floorName, FR.floorCode');
         $this->db->from('ldg_rooms as BaseTbl');
-        // $this->db->where('BaseTbl.roomId NOT IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0 AND bookEndDate > now())',NULL,FALSE);
-        $this->db->where('BaseTbl.roomId  IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0 AND bookEndDate < now())',NULL,FALSE);
-        
+        $this->db->join('ldg_room_sizes AS RS', 'RS.sizeId = BaseTbl.roomSizeId');
+        $this->db->join('ldg_floor AS FR', 'FR.floorId = BaseTbl.floorId');
+        $this->db->where('BaseTbl.roomId IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0)',NULL,FALSE);
+        $this->db->where('BaseTbl.isDeleted',0);
+        $this->db->where('RS.isDeleted',0);
+        $this->db->where('FR.isDeleted',0);
+        $this->db->or_where('BaseTbl.roomId NOT IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0 AND bookEndDate <= now())',NULL,FALSE);
+        // $this->db->or_where('BaseTbl.roomId NOT IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0 AND bookEndDate > now())',NULL,FALSE);
         $query = $this->db->get();
+        $result = $query->result();
 
         return count($query->result());
     }
+        // AWAL TIDAK MUNCUL 4
+        // $this->db->select('BaseTbl.roomId');
+        // $this->db->from('ldg_rooms as BaseTbl');
+        // // $this->db->where('BaseTbl.roomId NOT IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0 AND bookEndDate > now())',NULL,FALSE);
+        // $this->db->where('BaseTbl.roomId  IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0 AND bookEndDate < now())',NULL,FALSE);
+        
+        // $query = $this->db->get();
+
+       
 
     
 
@@ -54,6 +71,8 @@ class User_model extends CI_Model
         $this->db->from('ldg_rooms as BaseTbl');
         $this->db->join('ldg_bookings as bk','bk.roomId = BaseTbl.roomId');
         $this->db->where('BaseTbl.roomId IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0)',NULL,FALSE);
+        $this->db->where('bk.isDeleted',0);
+        $this->db->where('BaseTbl.isDeleted',0);
         $this->db->where('bk.bookEndDate >=',date('Y-m-d H:i'));
         $this->db->where('bk.bookStartDate <=',date('Y-m-d H:i'));
         $query = $this->db->get();
@@ -66,6 +85,8 @@ class User_model extends CI_Model
         $this->db->from('ldg_rooms as BaseTbl');
         $this->db->join('ldg_bookings as bk','bk.roomId = BaseTbl.roomId');
         $this->db->where('BaseTbl.roomId IN (SELECT roomId FROM ldg_bookings WHERE isDeleted=0)',NULL,FALSE);
+        $this->db->where('bk.isDeleted',0);
+        $this->db->where('BaseTbl.isDeleted',0);
         $this->db->where('bk.bookEndDate >=',date('Y-m-d H:i'));
         $this->db->where('bk.bookStartDate >=',date('Y-m-d H:i'));
         $query = $this->db->get();
@@ -76,7 +97,7 @@ class User_model extends CI_Model
 
     function userListingCount($searchText = '')
     {
-        $this->db->select('BaseTbl.userId, BaseTbl.userNIK, BaseTbl.userName, BaseTbl.userPhone, Role.role');
+        $this->db->select('BaseTbl.userId, BaseTbl.userNIK, BaseTbl.userName, BaseTbl.userPhone, Role.role,BaseTbl.divisi');
         $this->db->from('ldg_users as BaseTbl');
         $this->db->join('ldg_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
         if(!empty($searchText)) {
@@ -101,7 +122,7 @@ class User_model extends CI_Model
      */
     function userListing($searchText = '', $page, $segment)
     {
-        $this->db->select('BaseTbl.userId, BaseTbl.userNIK, BaseTbl.userName, BaseTbl.userPhone, Role.role');
+        $this->db->select('BaseTbl.userId, BaseTbl.userNIK, BaseTbl.userName, BaseTbl.userPhone, Role.role,BaseTbl.divisi');
         $this->db->from('ldg_users as BaseTbl');
         $this->db->join('ldg_roles as Role', 'Role.roleId = BaseTbl.roleId','left');
         if(!empty($searchText)) {
@@ -157,7 +178,7 @@ class User_model extends CI_Model
      */
     function getUserInfo($userId)
     {
-        $this->db->select('userId, userName, userNIK, userPhone, roleId');
+        $this->db->select('userId, userName, userNIK, userPhone, roleId, divisi');
         $this->db->from('ldg_users');
         $this->db->where('isDeleted', 0);
 		$this->db->where('roleId !=', 1);

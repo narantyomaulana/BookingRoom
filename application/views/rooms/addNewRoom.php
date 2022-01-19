@@ -64,18 +64,31 @@
                                     </div>
                                 </div>
                             </div>
-                            <!----
+                            
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="mobile">Room Number</label>
-                                        <input type="text" class="form-control" id="roomNumber" name="roomNumber" maxlength="200">
+                                        <select class="form-control" id="roomId" name="roomId">
+                                            <option value="">Select Room</option>
+                                            <?php
+                                            if(!empty($floors))
+                                            {
+                                                foreach ($floors as $frs)
+                                                {
+                                                    ?>
+                                                    <option value="<?php echo $frs->floorName ?>"><?php echo $frs->floorName ?></option>
+                                                    <?php
+                                                }
+                                            }
+                                            ?>
+                                        </select>        
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                 </div>    
                             </div>
-                        -->
+                       
                         </div><!-- /.box-body -->
     
                         <div class="box-footer">

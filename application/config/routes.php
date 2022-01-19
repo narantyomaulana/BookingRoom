@@ -38,13 +38,15 @@
 |
 */
 
-$route['default_controller'] = "login";
+$route['default_controller'] = "Login";
 $route['404_override'] = 'error';
 
 
 /*********** USER DEFINED ROUTES *******************/
 
-$route['loginMe'] = 'login/loginMe';
+$route['loginMe'] = 'Login/loginMe';
+$route['register'] = 'Login/register';
+$route['registerMe'] = 'Login/registerMe';
 $route['dashboard'] = 'user';
 $route['logout'] = 'user/logout';
 
@@ -59,6 +61,12 @@ $route['deleteUser'] = "user/deleteUser";
 $route['loadChangePass'] = "user/loadChangePass";
 $route['changePassword'] = "user/changePassword";
 $route['pageNotFound'] = "user/pageNotFound";
+$route['absenrapat'] = "absen/absenrapat";
+$route['absenrapat/book'] = "absen/absensi";
+$route['addedNewAbsen'] = "absen/addnewabsen";
+$route['reportabsen'] = "absen/reportabsen";
+$route['deleteabsen'] = "absen/deleteAbsen";
+
 
 
 $route['floorsListing'] = 'floors/floorsListing';

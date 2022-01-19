@@ -26,7 +26,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="floorCode">Nama Lantai</label>
-                                        <input type="text" class="form-control" id="floorCode" name="floorCode" maxlength="10">
+                                        <input type="text" class="form-control" id="floorCode" name="floorCode" maxlength="110">
                                     </div>
                                 </div>
                                 <div class="col-md-6">                                

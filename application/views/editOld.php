@@ -15,6 +15,7 @@ if(!empty($userInfo))
         $email = $uf->userNIK;
         $mobile = $uf->userPhone;
         $roleId = $uf->roleId;
+        $divisi = $uf->divisi;
     }
 }
 
@@ -59,7 +60,7 @@ if(!empty($userInfo))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="email">NIK atau Email</label>
-                                         <input type="text" class="form-control required" id="email" name="email"maxlength="128">
+                                         <input type="text" class="form-control required" id="email" name="email"maxlength="128" value="<?php echo $email; ?>">
                                     </div>
                                 </div>  
                             </div>
@@ -81,7 +82,7 @@ if(!empty($userInfo))
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="mobile">Mobile Number</label>
-                                        <input type="text" class="form-control" id="mobile" placeholder="Mobile Number" name="mobile" value="<?php echo $mobile; ?>" maxlength="10">
+                                        <input type="text" class="form-control" id="mobile" placeholder="Mobile Number" name="mobile" value="<?php echo $mobile; ?>" maxlength="12">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -103,6 +104,14 @@ if(!empty($userInfo))
                                         </select>
                                     </div>
                                 </div>    
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="mobile">Divisi</label>
+                                        <input type="text" class="form-control" id="mobile" name="divisi" value="<?php echo $divisi; ?>" maxlength="10">
+                                    </div>
+                                </div>
                             </div>
                         </div><!-- /.box-body -->
     
